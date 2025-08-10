@@ -10,6 +10,10 @@ It includes:
 
 ---
 
+## Architecture diagram for this e-commerce application
+
+<img width="2503" height="968" alt="image" src="https://github.com/user-attachments/assets/3d874717-c47a-4716-9987-5f3a304d8a4d" />
+
 ## 📂 Folder Structure
 
 ```
