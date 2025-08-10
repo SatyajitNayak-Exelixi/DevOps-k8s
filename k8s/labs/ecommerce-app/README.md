@@ -67,6 +67,21 @@ cd ..
 
 ## ☸ 2. Deploy to GKE
 
+### Create a GKE cluster
+
+Make sure you have a trial Google Cloud Account at this point. 
+
+From the command line of Cloud Shell:
+
+```bash
+gcloud container clusters create gke-demo --zone=us-east4 --num-nodes=1  --machine-type e2-standard-2 --network=vpc-dev --subnetwork=us-east4
+```
+
+Name of the cluster is gke-demo
+zone in us-eas54
+machine type - e2-standard-2
+VPC and subnet as per your account settings
+
 ### Connect to GKE Cluster
 
 Make sure you have a GKE cluster running and connected:
