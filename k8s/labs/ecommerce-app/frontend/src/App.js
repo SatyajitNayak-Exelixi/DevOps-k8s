@@ -1,40 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [title, setTitle] = useState("");
+  const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   const loadProducts = async () => {
-    setTitle("Products");
     const res = await fetch("/api/products");
-    const json = await res.json();
-    setData(json);
+    const data = await res.json();
+    setProducts(data);
   };
 
   const loadOrders = async () => {
-    setTitle("Orders");
     const res = await fetch("/api/orders");
-    const json = await res.json();
-    setData(json);
+    const data = await res.json();
+    setOrders(data);
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>E-Commerce App</h1>
-      <button onClick={loadProducts}>Load Products</button>
-      <button onClick={loadOrders}>Load Orders</button>
-      <h3>{title}</h3>
-      <ul>
-        {data.map((item, idx) => (
-          <li key={idx}>
-            {title === "Products"
-              ? `${item.name} - $${item.price}`
-              : `Order #${item.id} - Product ID: ${item.product_id}, Qty: ${item.quantity}, Total: $${item.total}`}
-          </li>
-        ))}
-      </ul>
+    <div className="container">
+      <header>
+        <h1>E-Commerce Demo</h1>
+      </header>
+
+      <div>
+        <button onClick={loadProducts}>Load Products</button>
+        <button onClick={loadOrders}>Load Orders</button>
+      </div>
+
+      <div className="output-section">
+        {products.length > 0 && (
+          <>
+            <h2>Products</h2>
+            <div className="cards">
+              {products.map((p) => (
+                <div key={p.id} className="card">
+                  <h3>{p.name}</h3>
+                  <p>{p.description}</p>
+                  <p><strong>${p.price}</strong></p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {orders.length > 0 && (
+          <>
+            <h2>Orders</h2>
+            <div className="cards">
+              {orders.map((o) => (
+                <div key={o.id} className="card">
+                  <h3>Order #{o.id}</h3>
+                  <p>Customer: {o.customer}</p>
+                  <p>Total: <strong>${o.total}</strong></p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      <footer>© 2025 E-Commerce Demo</footer>
     </div>
   );
 }
 
 export default App;
+
