@@ -1,99 +1,77 @@
-/* Global resets */
-* {
+/* App.css */
+
+body, html, #root {
   margin: 0;
-  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
+  padding: 20px;
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
-  color: #212529;
-  line-height: 1.6;
+.sidebar h2 {
+  margin-top: 0;
 }
 
-/* Container */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
 }
 
-/* Header */
-header {
-  background-color: #007bff;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  border-radius: 6px;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  font-size: 2rem;
-}
-
-/* Buttons */
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  margin: 5px;
-  border-radius: 5px;
+.sidebar li {
+  padding: 12px 10px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
+  border-radius: 4px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.sidebar li:hover {
+  background-color: #ddd;
 }
 
-/* Output section */
-.output-section {
-  background-color: white;
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-top: 15px;
+.sidebar li.active {
+  background-color: #bbb;
+  font-weight: bold;
 }
 
-/* Product & order cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-.card {
-  background: #ffffff;
-  border-radius: 6px;
-  padding: 15px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  color: #007bff;
-}
-
-.card p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* Footer */
-footer {
-  text-align: center;
+.api-url {
+  font-size: 0.85rem;
   margin-top: 30px;
-  padding: 15px;
-  font-size: 0.9rem;
-  color: #888;
+  word-break: break-word;
+  color: #333;
 }
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.loading-message {
+  font-style: italic;
+  color: #666;
+}
+

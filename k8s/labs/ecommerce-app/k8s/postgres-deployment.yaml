@@ -39,6 +39,9 @@ spec:
         volumeMounts:
         - name: postgres-storage
           mountPath: /var/lib/postgresql/data
+        - name: init-script
+          mountPath: /docker-entrypoint-initdb.d/init.sql
+          subPath: db-init.sql
         resources:
           requests:
             cpu: "250m"
@@ -50,3 +53,6 @@ spec:
       - name: postgres-storage
         persistentVolumeClaim:
           claimName: postgres-pvc
+      - name: init-script
+        configMap:
+          name: postgres-init-sql
