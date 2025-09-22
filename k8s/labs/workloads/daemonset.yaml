@@ -1,19 +1,23 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: frontend
+  name: node-nginx-simple
+  namespace: default
+  labels:
+    app: node-nginx-simple
 spec:
   selector:
     matchLabels:
-      name: frontend-webserver
+      app: node-nginx-simple
   template:
     metadata:
       labels:
-        name: frontend-webserver
+        app: node-nginx-simple
     spec:
       containers:
-        - name: webserver
-          image: httpd
-          ports:
-            - containerPort: 80
-
+      - name: nginx
+        image: nginx:1.25
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          name: http
