@@ -116,7 +116,46 @@ Copy the **client URL** from the output (`https://<ip>:2379`) and export:
 export ETCD_ENDPOINTS="https://172.31.28.251:2379"
 ```
 
+
 ---
+
+### Option C — Quick way: Read from `etcd.yaml`
+
+If you are on the control-plane node, the `etcd` static pod manifest is at:
+
+```
+/etc/kubernetes/manifests/etcd.yaml
+```
+
+Inside you’ll find a line like:
+
+```yaml
+- --advertise-client-urls=https://172.31.28.251:2379
+```
+
+You can extract it directly with:
+
+```bash
+grep -oP '(?<=--advertise-client-urls=)\S+' /etc/kubernetes/manifests/etcd.yaml
+```
+
+Example output:
+
+```
+https://172.31.28.251:2379
+```
+
+Then export it for later commands:
+
+```bash
+export ETCD_ENDPOINTS=$(grep -oP '(?<=--advertise-client-urls=)\S+' /etc/kubernetes/manifests/etcd.yaml)
+```
+
+---
+
+⚡ This method avoids `etcdctl member list` and is a **quick shortcut** if you just need the client URL already defined for the running etcd pod.
+
+
 
 ## 💾 Step 2: Take a Backup
 
