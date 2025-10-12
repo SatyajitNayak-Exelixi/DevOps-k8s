@@ -1,0 +1,74 @@
+# 1) Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capstoneproject
+---
+# 2) PersistentVolume (cluster-scoped; no namespace)
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysqldbstorage-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data
+    type: Directory
+---
+# 3) PersistentVolumeClaim (namespaced)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysqldbstorage-pvc
+  namespace: capstoneproject
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+# 4) Deployment (namespaced) using the PVC as storage
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-mysqldb
+  namespace: capstoneproject
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:5.6
+          envFrom:
+            - configMapRef:
+                name: mysql-config
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD
+          volumeMounts:
+            - name: mysqldata
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysqldata
+          persistentVolumeClaim:
+            claimName: mysqldbstorage-pvc
