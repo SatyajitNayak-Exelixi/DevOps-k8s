@@ -1,15 +1,23 @@
-# kubeadm Commands
-# Generate a new token for node join operations
+# Tokens
 kubeadm token generate
+kubeadm token create --ttl 2h --print-join-command
+kubeadm token list
+kubeadm token delete <token>
 
-#to show the join command with the token generated before.
-kubeadm token generate --print-join-command
+# Join
+kubeadm join <api-server>:6443 --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 
-# Check the expiration of all certificates in the cluster
+# Certificates
 sudo kubeadm certs check-expiration
-
-# Obtain the key used to encrypt certificates
 kubeadm certs certificate-key
+sudo kubeadm certs renew all
+sudo kubeadm certs renew apiserver
 
-# Print the default initialization configuration
-kubeadm config print init-defaults
+# Configs
+kubeadm config print init-defaults > kubeadm-init-defaults.yaml
+kubeadm init --config kubeadm-init-config.yaml
+
+# Info / housekeeping
+kubeadm version
+kubeadm config view
+sudo kubeadm reset   # destructive – use with care
