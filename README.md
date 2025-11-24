@@ -47,18 +47,19 @@ You can use:
 
 ## 🗂️ Repository Structure
 
-Below is a categorized map of topics and labs with direct links:
+Below is a categorized map of topics, labs, and important docs with direct links:
 
-| Category | Description | Labs |
-|----------|-------------|------|
-| **Getting Started** | Cluster basics, Pods, Namespaces | [Basics](k8s/labs/basics) |
-| **Workloads** | Deployments, DaemonSets, StatefulSets | [DaemonSet Example](k8s/labs/workloads/daemonset-simple.yaml) |
-| **Networking & Services** | ClusterIP, NodePort, LoadBalancer, Ingress | [Networking Labs](k8s/labs/networking) |
-| **Storage** | Volumes, PVCs, StorageClasses | [Storage Labs](k8s/labs/storage) |
-| **Config & Secrets** | ConfigMaps, Secrets, Environment Variables | [Config & Secrets Labs](k8s/labs/config-secrets) |
-| **Security** | RBAC, ServiceAccounts, Pod Security | [Security Labs](k8s/labs/security) |
-| **Maintenance & Scaling** | Rollouts, Scaling, Health Probes | [Maintenance Labs](k8s/labs/maintenance) |
-| **Troubleshooting** | Debugging Pods, Logs, Events | [Troubleshooting Labs](k8s/labs/troubleshooting) |
+| Category | Description | Labs & Docs |
+|----------|-------------|-------------|
+| **Getting Started** | Cluster basics, Pods, Namespaces | [Basics Labs](k8s/labs/basics/)<br>[Pod Example](k8s/labs/basics/pod.yaml)<br>[Namespace Example](k8s/labs/basics/namespace.yaml) |
+| **Workloads** | Deployments, DaemonSets, StatefulSets | [Deployments](k8s/labs/workloads/deployment.yaml)<br>[DaemonSet Example](k8s/labs/workloads/daemonset-simple.yaml)<br>[StatefulSet Example](k8s/labs/workloads/statefulset.yaml) |
+| **Networking & Services** | ClusterIP, NodePort, LoadBalancer, Ingress | [Networking Labs](k8s/labs/networking/)<br>[ClusterIP Example](k8s/labs/networking/clusterip.yaml)<br>[NodePort Example](k8s/labs/networking/nodeport.yaml)<br>[LoadBalancer Example](k8s/labs/networking/loadbalancer.yaml)<br>[Ingress Example](k8s/labs/networking/ingress.yaml) |
+| **Storage** | Volumes, PVCs, StorageClasses | [Storage Labs](k8s/labs/storage/)<br>[Volume Example](k8s/labs/storage/volume.yaml)<br>[PVC Example](k8s/labs/storage/pvc.yaml)<br>[StorageClass Example](k8s/labs/storage/storageclass.yaml) |
+| **Config & Secrets** | ConfigMaps, Secrets, Environment Variables | [Config & Secrets Labs](k8s/labs/config-secrets/)<br>[ConfigMap Example](k8s/labs/config-secrets/configmap.yaml)<br>[Secret Example](k8s/labs/config-secrets/secret.yaml) |
+| **Security** | RBAC, ServiceAccounts, Pod Security | [Security Labs](k8s/labs/security/)<br>[RBAC Example](k8s/labs/security/rbac.yaml)<br>[ServiceAccount Example](k8s/labs/security/serviceaccount.yaml)<br>[PodSecurityPolicy Example](k8s/labs/security/podsecuritypolicy.yaml) |
+| **Maintenance & Scaling** | Rollouts, Scaling, Health Probes | [Maintenance Labs](k8s/labs/maintenance/)<br>[Rolling Update Example](k8s/labs/maintenance/rollingupdate.yaml)<br>[Scaling Example](k8s/labs/maintenance/scaling.yaml)<br>[Liveness Probe Example](k8s/labs/maintenance/livenessprobe.yaml)<br>[Readiness Probe Example](k8s/labs/maintenance/readinessprobe.yaml) |
+| **Troubleshooting** | Debugging Pods, Logs, Events | [Troubleshooting Labs](k8s/labs/troubleshooting/)<br>[Debug Pod Example](k8s/labs/troubleshooting/debug-pod.yaml)<br>[Logs Example](k8s/labs/troubleshooting/logs.yaml) |
+| **Reference Docs** | Useful guides and references | [Kubernetes Cheat Sheet](k8s/docs/cheatsheet.md)<br>[Common kubectl Commands](k8s/docs/kubectl-commands.md)<br>[FAQ](k8s/docs/faq.md) |
 
 ---
 
@@ -68,7 +69,7 @@ Below is a categorized map of topics and labs with direct links:
    ```bash
    git clone https://github.com/devopscert202/k8sforbeginners.git
    cd k8sforbeginners
-````
+   ```
 
 2. **Choose a topic** from the [Repository Structure](#️-repository-structure).
 
@@ -112,10 +113,8 @@ Below is a categorized map of topics and labs with direct links:
 * With at least **1 master + 2 workers**, you’ll experience **real scheduling behavior**.
 * Explore → Apply → Break → Fix → Learn 🚀
 
-👉 Start your journey with the [Basics Labs](k8s/labs/basics).
+👉 Start your journey with the [Basics Labs](k8s/labs/basics/).
 
 ---
 
 💡 *Contributions are welcome! Feel free to add labs, fix typos, or improve explanations.*
-
-```
